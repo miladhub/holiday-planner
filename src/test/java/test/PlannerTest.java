@@ -101,6 +101,4 @@ public class PlannerTest {
 				will(returnValue(new Remaining(days, hours)));
 		}});
 	}
-
-	//TODO add a test about dates and holidays
 }
