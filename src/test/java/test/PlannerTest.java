@@ -102,5 +102,5 @@ public class PlannerTest {
 		}});
 	}
 
-	//TODO add a test about dates
+	//TODO add a test about dates and holidays
 }
