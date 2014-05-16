@@ -102,5 +102,5 @@ public class PlannerTest {
 		}});
 	}
 
-	//TODO add a test
+	//TODO add a test about calendar
 }
