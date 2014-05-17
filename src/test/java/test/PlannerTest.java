@@ -15,7 +15,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 public class PlannerTest {
-	//comment at start of file
 	@Rule public final JUnitRuleMockery context = new JUnitRuleMockery();
 
 	private final RemainingsListener responder = context.mock(RemainingsListener.class);
