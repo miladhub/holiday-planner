@@ -12,13 +12,14 @@
   	</properties>
 
 	<build>
+		<finalName>holidays</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -61,7 +62,7 @@
    		<dependency>
 		    <groupId>org.primefaces</groupId>
 		    <artifactId>primefaces</artifactId>
-		    <version>4.0</version>
+		    <version>5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>

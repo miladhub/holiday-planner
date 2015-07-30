@@ -6,16 +6,54 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
-	<h1>Hello World PrimeFaces</h1>
-
 	<h:form>
-	   <p:editor value="#{jsfHolidayPlanner.value}" />
-	   <p:commandButton value="OK" />
+		<p:panelGrid columns="2">
+			<h:outputText value="Hours off per month" />
+			<p:inputText value="#{jsfHolidayPlanner.hoursOffPerMonth}" />
+			
+			<h:outputText value="Vacation hours per month" />
+			<p:inputText value="#{jsfHolidayPlanner.vacationHoursPerMonth}" />
+			
+			<h:outputText value="Start month" />
+			<p:inputText value="#{jsfHolidayPlanner.startMonth}" />
+			
+			<h:outputText value="Hours off at initial month" />
+			<p:inputText value="#{jsfHolidayPlanner.startHoursOff}" />
+			
+			<h:outputText value="Vacation hours at initial month" />
+			<p:inputText value="#{jsfHolidayPlanner.startVacationHours}" />
+			
+			<h:outputText value="End month" />
+			<p:inputText value="#{jsfHolidayPlanner.endMonth}" />
+		</p:panelGrid>
+		
+		<p:commandButton value="Plan" actionListener="#{jsfHolidayPlanner.plan}" ajax="false" />
+		
+		<p:dataTable var="month" value="#{jsfHolidayPlanner.months}">
+			<p:column headerText="Month">
+				<h:outputText value="#{month.month}" />
+			</p:column>
+			<p:column headerText="Hours off hours">
+				<h:outputText value="#{month.hoursOff}" />
+			</p:column>
+			<p:column headerText="Vacation hours">
+				<h:outputText value="#{month.vacationHours}" />
+			</p:column>
+			
+			<p:column headerText="Add hours off">
+				<p:inputText value="#{month.changedHoursOff}" />
+			</p:column>
+			
+			<p:column headerText="Add vacation hours">
+				<p:inputText value="#{month.changedVacationHours}" />
+			</p:column>
+			
+			<p:column headerText="Change month">
+				<p:commandButton value="Take hours off" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}" ajax="false" />
+				<p:commandButton value="Take vacation hours" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}" ajax="false" />
+			</p:column>
+		</p:dataTable>
 	</h:form>
-
 </h:body>
 </html>
