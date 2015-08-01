@@ -54,26 +54,27 @@ public class JsfHolidayPlanner implements Serializable {
 		this.endMonth = endMonth;
 	}
 	
-	public void plan() {
-		months = new ArrayList<>();
-		Plan plan = (month, remainingHoursOff, remainingVacationHours) ->
-			months.add(new PlannedMonth(month, remainingHoursOff, remainingVacationHours));
-		HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, startMonth, startHoursOff, 
-				hoursOffPerMonth, startVacationHours, vacationHoursPerMonth);
-		planner.planUntil(endMonth);
-	}
-	
 	private List<PlannedMonth> months;
 	public List<PlannedMonth> getMonths() {
 		return months;
 	}
+	
+	public void plan() {
+		months = new ArrayList<>();
+		Plan plan = (month, remainingHoursOff, remainingVacationHours) ->
+			months.add(new PlannedMonth(month, remainingHoursOff, remainingVacationHours,
+					hoursTaken.hoursOffTaken(month), hoursTaken.vacationHoursTaken(month)));
+		HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, startMonth, startHoursOff, 
+				hoursOffPerMonth, startVacationHours, vacationHoursPerMonth);
+		planner.planUntil(endMonth);
+	}
 
 	public void takeHoursOff(PlannedMonth month) {
-		hoursTaken.takeHoursOff(month.getChangedHoursOff(), month.getMonth());
+		hoursTaken.takeHoursOff(month.getTakenHoursOff(), month.getMonth());
 		plan();
 	}
 	public void takeVacationHours(PlannedMonth month) {
-		hoursTaken.takeVacationHours(month.getChangedVacationHours(), month.getMonth());
+		hoursTaken.takeVacationHours(month.getTakenVacationHours(), month.getMonth());
 		plan();
 	}
 }

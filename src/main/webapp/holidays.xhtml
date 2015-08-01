@@ -34,19 +34,18 @@
 			<p:column headerText="Month">
 				<h:outputText value="#{month.month}" />
 			</p:column>
-			<p:column headerText="Hours off hours">
+			<p:column headerText="Remaining hours off">
 				<h:outputText value="#{month.hoursOff}" />
 			</p:column>
-			<p:column headerText="Vacation hours">
+			<p:column headerText="Remaining vacation hours">
 				<h:outputText value="#{month.vacationHours}" />
 			</p:column>
 			
 			<p:column headerText="Add hours off">
-				<p:inputText value="#{month.changedHoursOff}" />
+				<p:inputText value="#{month.takenHoursOff}" />
 			</p:column>
-			
 			<p:column headerText="Add vacation hours">
-				<p:inputText value="#{month.changedVacationHours}" />
+				<p:inputText value="#{month.takenVacationHours}" />
 			</p:column>
 			
 			<p:column headerText="Change month">

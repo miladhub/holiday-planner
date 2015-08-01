@@ -4,24 +4,14 @@ public class PlannedMonth {
 	private final String month;
 	private final int hoursOff;
 	private final int vacationHours;
-	private Integer changedHoursOff, changedVacationHours;
-	public Integer getChangedHoursOff() {
-		return changedHoursOff;
-	}
-	public void setChangedHoursOff(Integer changedHoursOff) {
-		this.changedHoursOff = changedHoursOff;
-	}
-	public Integer getChangedVacationHours() {
-		return changedVacationHours;
-	}
-	public void setChangedVacationHours(Integer changedVacationHours) {
-		this.changedVacationHours = changedVacationHours;
-	}
-	public PlannedMonth(String month, int hoursOff, int vacationHours) {
+	private Integer takenHoursOff, takenVacationHours;
+	public PlannedMonth(String month, int hoursOff, int vacationHours, Integer takenHoursOff, Integer takenVacationHours) {
 		super();
 		this.month = month;
 		this.hoursOff = hoursOff;
 		this.vacationHours = vacationHours;
+		this.takenHoursOff = takenHoursOff;
+		this.takenVacationHours = takenVacationHours;
 	}
 	public String getMonth() {
 		return month;
@@ -31,5 +21,17 @@ public class PlannedMonth {
 	}
 	public int getVacationHours() {
 		return vacationHours;
+	}
+	public Integer getTakenHoursOff() {
+		return takenHoursOff;
+	}
+	public void setTakenHoursOff(Integer takenHoursOff) {
+		this.takenHoursOff = takenHoursOff;
+	}
+	public Integer getTakenVacationHours() {
+		return takenVacationHours;
+	}
+	public void setTakenVacationHours(Integer takenVacationHours) {
+		this.takenVacationHours = takenVacationHours;
 	}
 }
