@@ -43,14 +43,14 @@
 					<h:outputText value="#{month.vacationHours}" />
 				</p:column>
 				
-				<p:column headerText="Add hours off">
+				<p:column headerText="Hours off">
 					<h:panelGroup>
 						<p:inputText value="#{month.takenHoursOff}" maxlength="2" size="2" />
 						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}"
 							update=":holidayForm:monthsTable" style="float: right;" />
 					</h:panelGroup>
 				</p:column>
-				<p:column headerText="Add vacation hours">
+				<p:column headerText="Vacation hours">
 					<h:panelGroup>
 						<p:inputText value="#{month.takenVacationHours}" maxlength="2" size="2" />
 						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}"
