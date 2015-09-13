@@ -8,7 +8,7 @@
 <h:head></h:head>
 
 <h:body>
-	<h:form>
+	<h:form id="holidayForm">
 		<p:panelGrid columns="2">
 			<h:outputText value="Hours off per month" />
 			<p:inputText value="#{jsfHolidayPlanner.hoursOffPerMonth}" />
@@ -32,7 +32,7 @@
 		<p:commandButton value="Plan" actionListener="#{jsfHolidayPlanner.plan}" update="tableGroup" />
 		
 		<h:panelGroup id="tableGroup" layout="block">
-			<p:dataTable var="month" value="#{jsfHolidayPlanner.months}" rendered="#{jsfHolidayPlanner.shouldRenderTable}">
+			<p:dataTable id="monthsTable" var="month" value="#{jsfHolidayPlanner.months}" rendered="#{jsfHolidayPlanner.shouldRenderTable}">
 				<p:column headerText="Month">
 					<h:outputText value="#{month.month}" />
 				</p:column>
@@ -46,13 +46,15 @@
 				<p:column headerText="Add hours off">
 					<h:panelGroup>
 						<p:inputText value="#{month.takenHoursOff}" maxlength="2" size="2" />
-						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}" ajax="false" style="float: right;" />
+						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}"
+							update=":holidayForm:monthsTable" style="float: right;" />
 					</h:panelGroup>
 				</p:column>
 				<p:column headerText="Add vacation hours">
 					<h:panelGroup>
 						<p:inputText value="#{month.takenVacationHours}" maxlength="2" size="2" />
-						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}" ajax="false" style="float: right;" />
+						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}"
+							update=":holidayForm:monthsTable" style="float: right;" />
 					</h:panelGroup>
 				</p:column>
 			</p:dataTable>
