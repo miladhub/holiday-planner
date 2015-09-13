@@ -44,15 +44,16 @@
 				</p:column>
 				
 				<p:column headerText="Add hours off">
-					<p:inputText value="#{month.takenHoursOff}" />
+					<h:panelGroup>
+						<p:inputText value="#{month.takenHoursOff}" maxlength="2" size="2" />
+						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}" ajax="false" style="float: right;" />
+					</h:panelGroup>
 				</p:column>
 				<p:column headerText="Add vacation hours">
-					<p:inputText value="#{month.takenVacationHours}" />
-				</p:column>
-				
-				<p:column headerText="Change month">
-					<p:commandButton value="Take hours off" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}" ajax="false" />
-					<p:commandButton value="Take vacation hours" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}" ajax="false" />
+					<h:panelGroup>
+						<p:inputText value="#{month.takenVacationHours}" maxlength="2" size="2" />
+						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}" ajax="false" style="float: right;" />
+					</h:panelGroup>
 				</p:column>
 			</p:dataTable>
 		</h:panelGroup>
