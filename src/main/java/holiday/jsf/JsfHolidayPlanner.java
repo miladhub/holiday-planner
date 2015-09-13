@@ -1,21 +1,56 @@
-package holiday;
+package holiday.jsf;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+
+import holiday.HolidayPlanner;
+import holiday.HoursTaken;
+import holiday.Plan;
 
 @ManagedBean
 @ViewScoped
 public class JsfHolidayPlanner implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static HoursTaken hoursTaken = new InMemoryHoursTaken();
+	@Inject private HoursTaken hoursTaken;
 	
 	private Integer hoursOffPerMonth = 3, vacationHoursPerMonth = 2, startHoursOff = 10, startVacationHours = 40;
 	private String startMonth = "Jan-2015", endMonth = "Mar-2015";
+	private List<PlannedMonth> months;	
+	private HolidayPlanner planner;
+
+	@PostConstruct
+	private void createPlanner() {
+		Plan plan = (month, remainingHoursOff, remainingVacationHours) ->
+			months.add(new PlannedMonth(month, remainingHoursOff, remainingVacationHours,
+					hoursTaken.hoursOffTaken(month), hoursTaken.vacationHoursTaken(month)));
+		planner = new HolidayPlanner(plan, hoursTaken, startMonth, startHoursOff, 
+				hoursOffPerMonth, startVacationHours, vacationHoursPerMonth);
+	}
+	
+	
+	public void takeHoursOff(PlannedMonth month) {
+		planner.takeHoursOff(month.getTakenHoursOff(), month.getMonth());
+		plan();
+	}
+	public void takeVacationHours(PlannedMonth month) {
+		planner.takeVacationHours(month.getTakenVacationHours(), month.getMonth());
+		plan();
+	}
+	public void plan() {
+		months = new ArrayList<>();
+		planner.planUntil(endMonth);
+	}
+	
+	public boolean isShouldRenderTable() {
+		return months != null && !months.isEmpty();
+	}
 	
 	public Integer getHoursOffPerMonth() {
 		return hoursOffPerMonth;
@@ -53,28 +88,7 @@ public class JsfHolidayPlanner implements Serializable {
 	public void setEndMonth(String endMonth) {
 		this.endMonth = endMonth;
 	}
-	
-	private List<PlannedMonth> months;
 	public List<PlannedMonth> getMonths() {
 		return months;
-	}
-	
-	public void plan() {
-		months = new ArrayList<>();
-		Plan plan = (month, remainingHoursOff, remainingVacationHours) ->
-			months.add(new PlannedMonth(month, remainingHoursOff, remainingVacationHours,
-					hoursTaken.hoursOffTaken(month), hoursTaken.vacationHoursTaken(month)));
-		HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, startMonth, startHoursOff, 
-				hoursOffPerMonth, startVacationHours, vacationHoursPerMonth);
-		planner.planUntil(endMonth);
-	}
-
-	public void takeHoursOff(PlannedMonth month) {
-		hoursTaken.takeHoursOff(month.getTakenHoursOff(), month.getMonth());
-		plan();
-	}
-	public void takeVacationHours(PlannedMonth month) {
-		hoursTaken.takeVacationHours(month.getTakenVacationHours(), month.getMonth());
-		plan();
 	}
 }

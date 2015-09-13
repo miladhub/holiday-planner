@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
 <h:body>
 	<h:form>
 		<p:panelGrid columns="2">
@@ -28,31 +29,33 @@
 			<p:inputText value="#{jsfHolidayPlanner.endMonth}" />
 		</p:panelGrid>
 		
-		<p:commandButton value="Plan" actionListener="#{jsfHolidayPlanner.plan}" ajax="false" />
+		<p:commandButton value="Plan" actionListener="#{jsfHolidayPlanner.plan}" update="tableGroup" />
 		
-		<p:dataTable var="month" value="#{jsfHolidayPlanner.months}">
-			<p:column headerText="Month">
-				<h:outputText value="#{month.month}" />
-			</p:column>
-			<p:column headerText="Remaining hours off">
-				<h:outputText value="#{month.hoursOff}" />
-			</p:column>
-			<p:column headerText="Remaining vacation hours">
-				<h:outputText value="#{month.vacationHours}" />
-			</p:column>
-			
-			<p:column headerText="Add hours off">
-				<p:inputText value="#{month.takenHoursOff}" />
-			</p:column>
-			<p:column headerText="Add vacation hours">
-				<p:inputText value="#{month.takenVacationHours}" />
-			</p:column>
-			
-			<p:column headerText="Change month">
-				<p:commandButton value="Take hours off" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}" ajax="false" />
-				<p:commandButton value="Take vacation hours" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}" ajax="false" />
-			</p:column>
-		</p:dataTable>
+		<h:panelGroup id="tableGroup" layout="block">
+			<p:dataTable var="month" value="#{jsfHolidayPlanner.months}" rendered="#{jsfHolidayPlanner.shouldRenderTable}">
+				<p:column headerText="Month">
+					<h:outputText value="#{month.month}" />
+				</p:column>
+				<p:column headerText="Remaining hours off">
+					<h:outputText value="#{month.hoursOff}" />
+				</p:column>
+				<p:column headerText="Remaining vacation hours">
+					<h:outputText value="#{month.vacationHours}" />
+				</p:column>
+				
+				<p:column headerText="Add hours off">
+					<p:inputText value="#{month.takenHoursOff}" />
+				</p:column>
+				<p:column headerText="Add vacation hours">
+					<p:inputText value="#{month.takenVacationHours}" />
+				</p:column>
+				
+				<p:column headerText="Change month">
+					<p:commandButton value="Take hours off" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}" ajax="false" />
+					<p:commandButton value="Take vacation hours" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}" ajax="false" />
+				</p:column>
+			</p:dataTable>
+		</h:panelGroup>
 	</h:form>
 </h:body>
 </html>

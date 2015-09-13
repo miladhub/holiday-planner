@@ -3,6 +3,8 @@ holiday-planner
 
 Case study. Plans days and hours off from work with simple GUI.
 
+Deploy and access at [http://localhost:8080/holidays/holidays.jsf](http://localhost:8080/holidays/holidays.jsf)
+
 use cases
 =========
 

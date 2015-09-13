@@ -1,4 +1,4 @@
-package holiday;
+package holiday.jsf;
 
 public class PlannedMonth {
 	private final String month;
