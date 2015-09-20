@@ -1,8 +1,8 @@
 package holiday;
 
 public interface HoursTaken {
-	void takeHoursOff(int hours, String month);
-	void takeVacationHours(int hours, String month);
-	int hoursOffTaken(String month);
-	int vacationHoursTaken(String month);
+	void takeHoursOff(double hours, String month);
+	void takeVacationHours(double hours, String month);
+	double hoursOffTaken(String month);
+	double vacationHoursTaken(String month);
 }

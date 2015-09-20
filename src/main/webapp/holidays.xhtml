@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
@@ -36,24 +37,27 @@
 				<p:column headerText="Month">
 					<h:outputText value="#{month.month}" />
 				</p:column>
-				<p:column headerText="Remaining hours off">
-					<h:outputText value="#{month.hoursOff}" />
-				</p:column>
 				<p:column headerText="Remaining vacation hours">
-					<h:outputText value="#{month.vacationHours}" />
+					<h:outputText value="#{month.vacationHours}">
+						<f:convertNumber minFractionDigits="2" />
+					</h:outputText>
 				</p:column>
-				
-				<p:column headerText="Hours off">
+				<p:column headerText="Vacation hours taken">
 					<h:panelGroup>
-						<p:inputText value="#{month.takenHoursOff}" maxlength="2" size="2" />
-						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}"
+						<p:inputText value="#{month.takenVacationHours}" maxlength="5" size="5" />
+						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}"
 							update=":holidayForm:monthsTable" style="float: right;" />
 					</h:panelGroup>
 				</p:column>
-				<p:column headerText="Vacation hours">
+				<p:column headerText="Remaining hours off">
+					<h:outputText value="#{month.hoursOff}">
+						<f:convertNumber minFractionDigits="2" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Hours off taken">
 					<h:panelGroup>
-						<p:inputText value="#{month.takenVacationHours}" maxlength="2" size="2" />
-						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeVacationHours(month)}"
+						<p:inputText value="#{month.takenHoursOff}" maxlength="5" size="5" />
+						<p:commandButton value="Take" actionListener="#{jsfHolidayPlanner.takeHoursOff(month)}"
 							update=":holidayForm:monthsTable" style="float: right;" />
 					</h:panelGroup>
 				</p:column>

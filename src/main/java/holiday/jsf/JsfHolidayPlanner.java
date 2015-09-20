@@ -20,8 +20,8 @@ public class JsfHolidayPlanner implements Serializable {
 
 	@Inject private HoursTaken hoursTaken;
 	
-	private Integer hoursOffPerMonth = 3, vacationHoursPerMonth = 2, startHoursOff = 10, startVacationHours = 40;
-	private String startMonth = "Jan-2015", endMonth = "Mar-2015";
+	private double hoursOffPerMonth = 8.67, vacationHoursPerMonth = 13.4, startHoursOff = 93, startVacationHours = 28.89;
+	private String startMonth = "Aug-2015", endMonth = "Aug-2016";
 	private List<PlannedMonth> months;	
 	private HolidayPlanner planner;
 
@@ -52,28 +52,28 @@ public class JsfHolidayPlanner implements Serializable {
 		return months != null && !months.isEmpty();
 	}
 	
-	public Integer getHoursOffPerMonth() {
+	public Double getHoursOffPerMonth() {
 		return hoursOffPerMonth;
 	}
-	public void setHoursOffPerMonth(Integer hoursOffPerMonth) {
+	public void setHoursOffPerMonth(Double hoursOffPerMonth) {
 		this.hoursOffPerMonth = hoursOffPerMonth;
 	}
-	public Integer getVacationHoursPerMonth() {
+	public Double getVacationHoursPerMonth() {
 		return vacationHoursPerMonth;
 	}
-	public void setVacationHoursPerMonth(Integer vacationHoursPerMonth) {
+	public void setVacationHoursPerMonth(Double vacationHoursPerMonth) {
 		this.vacationHoursPerMonth = vacationHoursPerMonth;
 	}
-	public Integer getStartHoursOff() {
+	public Double getStartHoursOff() {
 		return startHoursOff;
 	}
-	public void setStartHoursOff(Integer startHoursOff) {
+	public void setStartHoursOff(Double startHoursOff) {
 		this.startHoursOff = startHoursOff;
 	}
-	public Integer getStartVacationHours() {
+	public Double getStartVacationHours() {
 		return startVacationHours;
 	}
-	public void setStartVacationHours(Integer startVacationHours) {
+	public void setStartVacationHours(Double startVacationHours) {
 		this.startVacationHours = startVacationHours;
 	}
 	public String getStartMonth() {

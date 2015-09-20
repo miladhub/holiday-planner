@@ -8,7 +8,7 @@ Deploy and access at [http://localhost:8080/holidays/holidays.jsf](http://localh
 use cases
 =========
 
-1) set actual hours/vacations at the beginning of a given month, hours/vacation gained per month and fixed vacations
+1) set actual hours/vacations at the beginning of a given month, hours/vacation gained per month
 --> look at hours/vacations in the future, until given date
 
 2) add hours off/vacations in a given month

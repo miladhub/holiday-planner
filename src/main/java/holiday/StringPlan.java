@@ -8,11 +8,11 @@ public class StringPlan implements Plan {
 	}
 
 	@Override
-	public void remainingHours(String month, int remainingHoursOff, int remainingVacationHours) {
+	public void remainingHours(String month, double remainingHoursOff, double remainingVacationHours) {
 		plan += month + " ... " + format(remainingHoursOff) + "  ... " + format(remainingVacationHours) + "\n";
 	}
 
-	private String format(int hours) {
-		return String.format("%3d", hours);
+	private String format(double hours) {
+		return String.format("%3.0f", hours);
 	}
 }

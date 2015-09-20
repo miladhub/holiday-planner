@@ -2,10 +2,10 @@ package holiday.jsf;
 
 public class PlannedMonth {
 	private final String month;
-	private final int hoursOff;
-	private final int vacationHours;
-	private Integer takenHoursOff, takenVacationHours;
-	public PlannedMonth(String month, int hoursOff, int vacationHours, Integer takenHoursOff, Integer takenVacationHours) {
+	private final double hoursOff;
+	private final double vacationHours;
+	private Double takenHoursOff, takenVacationHours;
+	public PlannedMonth(String month, double hoursOff, double vacationHours, Double takenHoursOff, Double takenVacationHours) {
 		super();
 		this.month = month;
 		this.hoursOff = hoursOff;
@@ -16,22 +16,22 @@ public class PlannedMonth {
 	public String getMonth() {
 		return month;
 	}
-	public int getHoursOff() {
+	public double getHoursOff() {
 		return hoursOff;
 	}
-	public int getVacationHours() {
+	public double getVacationHours() {
 		return vacationHours;
 	}
-	public Integer getTakenHoursOff() {
+	public Double getTakenHoursOff() {
 		return takenHoursOff;
 	}
-	public void setTakenHoursOff(Integer takenHoursOff) {
+	public void setTakenHoursOff(Double takenHoursOff) {
 		this.takenHoursOff = takenHoursOff;
 	}
-	public Integer getTakenVacationHours() {
+	public Double getTakenVacationHours() {
 		return takenVacationHours;
 	}
-	public void setTakenVacationHours(Integer takenVacationHours) {
+	public void setTakenVacationHours(Double takenVacationHours) {
 		this.takenVacationHours = takenVacationHours;
 	}
 }

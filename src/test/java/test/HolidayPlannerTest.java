@@ -37,13 +37,13 @@ public class HolidayPlannerTest {
 	public void visitsHoursOffTakenWhenPlanningOneMonth() throws Exception {
 		context.checking(new Expectations() {{
 			allowing(hoursTaken).hoursOffTaken("Jan-2015");
-				will(returnValue(3));
+				will(returnValue(3.0));
 			allowing(hoursTaken).hoursOffTaken(with(Matchers.not("Jan-2015")));
-				will(returnValue(0));
+				will(returnValue(0.0));
 			allowing(hoursTaken).vacationHoursTaken("Jan-2015");
-				will(returnValue(2));
+				will(returnValue(2.0));
 			allowing(hoursTaken).vacationHoursTaken(with(Matchers.not("Jan-2015")));
-				will(returnValue(0));
+				will(returnValue(0.0));
 				
 			oneOf(plan).remainingHours("Jan-2015", 7, 18);
 		}});
@@ -54,13 +54,13 @@ public class HolidayPlannerTest {
 	public void visitsHoursOffTakenWhenPlanningTwoMonths() throws Exception {
 		context.checking(new Expectations() {{
 			allowing(hoursTaken).hoursOffTaken("Jan-2015");
-			will(returnValue(3));
+				will(returnValue(3.0));
 			allowing(hoursTaken).hoursOffTaken(with(Matchers.not("Jan-2015")));
-				will(returnValue(0));
+				will(returnValue(0.0));
 			allowing(hoursTaken).vacationHoursTaken("Jan-2015");
-				will(returnValue(2));
+				will(returnValue(2.0));
 			allowing(hoursTaken).vacationHoursTaken(with(Matchers.not("Jan-2015")));
-				will(returnValue(0));
+				will(returnValue(0.0));
 				
 			oneOf(plan).remainingHours("Jan-2015", 7, 18);
 			oneOf(plan).remainingHours("Feb-2015", 12, 21);
@@ -72,13 +72,13 @@ public class HolidayPlannerTest {
 	public void visitsHoursOffTakenWhenPlanningMultipleMonths() throws Exception {
 		context.checking(new Expectations() {{
 			allowing(hoursTaken).hoursOffTaken("Jan-2015");
-			will(returnValue(3));
+				will(returnValue(3.0));
 			allowing(hoursTaken).hoursOffTaken(with(Matchers.not("Jan-2015")));
-				will(returnValue(0));
+				will(returnValue(0.0));
 			allowing(hoursTaken).vacationHoursTaken("Jan-2015");
-				will(returnValue(2));
+				will(returnValue(2.0));
 			allowing(hoursTaken).vacationHoursTaken(with(Matchers.not("Jan-2015")));
-				will(returnValue(0));
+				will(returnValue(0.0));
 				
 			oneOf(plan).remainingHours("Jan-2015", 7, 18);
 			oneOf(plan).remainingHours("Feb-2015", 12, 21);

@@ -7,16 +7,16 @@ public class HolidayPlanner {
 	private final HoursTaken hoursTaken;
 	private final Plan plan;
 	private final String initialMonth;
-	private final int initialHoursOff;
-	private final int hoursOffPerMonth;
-	private final int initialVacationHours;
-	private final int vacationHoursPerMonth;
+	private final double initialHoursOff;
+	private final double hoursOffPerMonth;
+	private final double initialVacationHours;
+	private final double vacationHoursPerMonth;
 	private final DateTimeFormatter monthsFormatter = DateTimeFormatter.ofPattern("MMM-yyyy");
 	private final DateTimeFormatter daysFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 
 	public HolidayPlanner(Plan plan, HoursTaken hoursTaken, String initialMonth,
-			int initialHoursOff, int hoursOffPerMonth, int initialVacationHours,
-			int vacationHoursPerMonth) {
+			double initialHoursOff, double hoursOffPerMonth, double initialVacationHours,
+			double vacationHoursPerMonth) {
 		this.plan = plan;
 		this.hoursTaken = hoursTaken;
 		this.initialMonth = initialMonth;
@@ -26,17 +26,17 @@ public class HolidayPlanner {
 		this.vacationHoursPerMonth = vacationHoursPerMonth;
 	}
 
-	public void takeHoursOff(int hours, String month) {
+	public void takeHoursOff(double hours, String month) {
 		hoursTaken.takeHoursOff(hours, month);
 	}
 	
-	public void takeVacationHours(int hours, String month) {
+	public void takeVacationHours(double hours, String month) {
 		hoursTaken.takeVacationHours(hours, month);
 	}
 
 	public void planUntil(String endMonth) {
-		int lastHoursOff = initialHoursOff - hoursTaken.hoursOffTaken(initialMonth);
-		int lastVacationHours = initialVacationHours - hoursTaken.vacationHoursTaken(initialMonth);
+		double lastHoursOff = initialHoursOff - hoursTaken.hoursOffTaken(initialMonth);
+		double lastVacationHours = initialVacationHours - hoursTaken.vacationHoursTaken(initialMonth);
 		plan.remainingHours(initialMonth, lastHoursOff, lastVacationHours);
 		
 		LocalDate currentMonth = date(initialMonth).plusMonths(1);

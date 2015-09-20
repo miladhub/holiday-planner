@@ -1,5 +1,5 @@
 package holiday;
 
 public interface Plan {
-	void remainingHours(String month, int remainingHoursOff, int remainingVacationHours);
+	void remainingHours(String month, double remainingHoursOff, double remainingVacationHours);
 }
