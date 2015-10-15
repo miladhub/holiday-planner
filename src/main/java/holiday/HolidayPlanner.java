@@ -6,24 +6,22 @@ import java.time.format.DateTimeFormatter;
 public class HolidayPlanner {
 	private final HoursTaken hoursTaken;
 	private final Plan plan;
-	private final String initialMonth;
 	private final double initialHoursOff;
 	private final double hoursOffPerMonth;
 	private final double initialVacationHours;
 	private final double vacationHoursPerMonth;
 	private final DateTimeFormatter monthsFormatter = DateTimeFormatter.ofPattern("MMM-yyyy");
 	private final DateTimeFormatter daysFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+	private final String initialMonth;
 
-	public HolidayPlanner(Plan plan, HoursTaken hoursTaken, String initialMonth,
-			double initialHoursOff, double hoursOffPerMonth, double initialVacationHours,
-			double vacationHoursPerMonth) {
+	public HolidayPlanner(Plan plan, HoursTaken hoursTaken, HolidayContext context) {
 		this.plan = plan;
 		this.hoursTaken = hoursTaken;
-		this.initialMonth = initialMonth;
-		this.initialHoursOff = initialHoursOff;
-		this.hoursOffPerMonth = hoursOffPerMonth;
-		this.initialVacationHours = initialVacationHours;
-		this.vacationHoursPerMonth = vacationHoursPerMonth;
+		this.initialHoursOff = context.configuration().initialHoursOff;
+		this.hoursOffPerMonth = context.configuration().hoursOffPerMonth;
+		this.initialVacationHours = context.configuration().initialVacationHours;
+		this.vacationHoursPerMonth = context.configuration().vacationHoursPerMonth;
+		this.initialMonth = context.configuration().startMonth;
 	}
 
 	public void takeHoursOff(double hours, String month) {

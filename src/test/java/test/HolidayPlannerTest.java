@@ -1,7 +1,9 @@
 package test;
 
 import holiday.HolidayPlanner;
+import holiday.HolidayConfiguration;
 import holiday.HoursTaken;
+import holiday.InMemoryHolidaySettings;
 import holiday.Plan;
 
 import org.hamcrest.Matchers;
@@ -15,7 +17,8 @@ public class HolidayPlannerTest {
 	
 	private final Plan plan = context.mock(Plan.class);
 	private final HoursTaken hoursTaken = context.mock(HoursTaken.class);
-	private final HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, "Jan-2015", 10, 5, 20, 3);
+	private final HolidayConfiguration config = new HolidayConfiguration(10, 5, 20, 3, "Jan-2015");
+	private final HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, InMemoryHolidaySettings.of(config));
 	
 	@Test
 	public void keepsTrackOfHoursOffTaken() throws Exception {

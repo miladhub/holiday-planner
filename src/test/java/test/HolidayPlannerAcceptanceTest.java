@@ -2,16 +2,19 @@ package test;
 
 import static org.junit.Assert.*;
 import holiday.HolidayPlanner;
+import holiday.HolidayConfiguration;
 import holiday.HoursTaken;
+import holiday.InMemoryHolidaySettings;
 import holiday.InMemoryHoursTaken;
 import holiday.StringPlan;
 
 import org.junit.Test;
 
 public class HolidayPlannerAcceptanceTest {
+	private final HolidayConfiguration config = new HolidayConfiguration(10, 5, 20, 3, "Jan-2015");
 	private final StringPlan plan = new StringPlan();
 	private final HoursTaken hoursTaken = new InMemoryHoursTaken();
-	private final HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, "Jan-2015", 10, 5, 20, 3);
+	private final HolidayPlanner planner = new HolidayPlanner(plan, hoursTaken, InMemoryHolidaySettings.of(config));
 	
 	@Test
 	public void takeHoursOnGivenMonth() throws Exception {

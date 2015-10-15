@@ -10,27 +10,11 @@
 
 <h:body>
 	<h:form id="holidayForm">
-		<p:panelGrid columns="2">
-			<h:outputText value="Hours off per month" />
-			<p:inputText value="#{jsfHolidayPlanner.hoursOffPerMonth}" />
-			
-			<h:outputText value="Vacation hours per month" />
-			<p:inputText value="#{jsfHolidayPlanner.vacationHoursPerMonth}" />
-			
-			<h:outputText value="Start month" />
-			<p:inputText value="#{jsfHolidayPlanner.startMonth}" />
-			
-			<h:outputText value="Hours off at initial month" />
-			<p:inputText value="#{jsfHolidayPlanner.startHoursOff}" />
-			
-			<h:outputText value="Vacation hours at initial month" />
-			<p:inputText value="#{jsfHolidayPlanner.startVacationHours}" />
-			
-			<h:outputText value="End month" />
+		<p:panelGrid columns="3">
+			<p:commandButton value="Plan until..." actionListener="#{jsfHolidayPlanner.plan}" update="tableGroup" />
 			<p:inputText value="#{jsfHolidayPlanner.endMonth}" />
+			<p:commandButton value="Config" action="setup.xhtml" />
 		</p:panelGrid>
-		
-		<p:commandButton value="Plan" actionListener="#{jsfHolidayPlanner.plan}" update="tableGroup" />
 		
 		<h:panelGroup id="tableGroup" layout="block">
 			<p:dataTable id="monthsTable" var="month" value="#{jsfHolidayPlanner.months}" rendered="#{jsfHolidayPlanner.shouldRenderTable}">
