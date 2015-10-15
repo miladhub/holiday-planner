@@ -15,9 +15,8 @@ import holiday.HolidayContext;
 public class JsfSetup implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private double hoursOffPerMonth = 8.67, vacationHoursPerMonth = 13.4, 
-			startHoursOff = 93, startVacationHours = 28.89;
-	private String startMonth = "Aug-2015";
+	private double hoursOffPerMonth, vacationHoursPerMonth, startHoursOff, startVacationHours;
+	private String startMonth;
 
 	@Inject private HolidayContext context;
 	

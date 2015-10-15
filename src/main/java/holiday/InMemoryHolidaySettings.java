@@ -4,7 +4,8 @@ import javax.inject.Singleton;
 
 @Singleton
 public class InMemoryHolidaySettings implements HolidayContext {
-	private HolidayConfiguration holidayConfiguration = new HolidayConfiguration(93, 8.67, 28.89, 13.4, "Aug-2015");
+	private HolidayConfiguration holidayConfiguration = new HolidayConfiguration(93, 8.67, 28.89, 13.4,
+			"Aug-2015");
 
 	public InMemoryHolidaySettings() {
 		super();
